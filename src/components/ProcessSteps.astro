@@ -1,0 +1,186 @@
+---
+const steps = [
+  {
+    number: '01',
+    title: 'Anfrage und Beratung',
+    description: 'Wir analysieren Ihre Anforderungen und entwickeln ein maßgeschneidertes Konzept.'
+  },
+  {
+    number: '02',
+    title: 'Planung und Dokumentation',
+    description: 'Detaillierte Planung inklusive Genehmigungen und technischer Dokumentation.'
+  },
+  {
+    number: '03',
+    title: 'Umsetzung',
+    description: 'Professionelle Ausführung durch erfahrene Fachkräfte nach höchsten Standards.'
+  },
+  {
+    number: '04',
+    title: 'Qualitätskontrolle',
+    description: 'Umfassende Prüfung und Dokumentation aller durchgeführten Arbeiten.'
+  },
+  {
+    number: '05',
+    title: 'Übergabe und Support',
+    description: 'Vollständige Projektübergabe mit Dokumentation und langfristigem Support.'
+  }
+];
+---
+
+<section class="process-section">
+  <div class="container-custom">
+    <div class="process-header">
+      <span class="process-label animate-fade-up">Unser Prozess</span>
+      <h2 class="process-title animate-fade-up">Von der Anfrage bis zur Übergabe</h2>
+      <p class="process-description animate-fade-up">
+        Ein strukturierter Ablauf für maximale Transparenz und Qualität.
+      </p>
+    </div>
+    
+    <div class="process-grid">
+      {steps.map((step, index) => (
+        <div class="process-step animate-fade-up" style={`transition-delay: ${(index + 1) * 80}ms;`}>
+          <div class="process-step-header">
+            <span class="process-step-number">{step.number}</span>
+            {index < steps.length - 1 && <div class="process-step-connector"></div>}
+          </div>
+          <h3 class="process-step-title">{step.title}</h3>
+          <p class="process-step-description">{step.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .process-section {
+    padding: 5rem 0;
+  }
+  
+  @media (min-width: 1024px) {
+    .process-section {
+      padding: 7rem 0;
+    }
+  }
+  
+  .process-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  
+  .process-label {
+    display: inline-block;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #1EC8E8;
+    margin-bottom: 0.75rem;
+  }
+  
+  .process-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+  
+  @media (min-width: 640px) {
+    .process-title {
+      font-size: 2.5rem;
+    }
+  }
+  
+  .process-description {
+    font-size: 1.0625rem;
+    color: #6B7280;
+    max-width: 32rem;
+    margin: 0 auto;
+  }
+  
+  .process-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  @media (min-width: 768px) {
+    .process-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .process-grid {
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+    }
+  }
+  
+  .process-step {
+    position: relative;
+    padding: 1.5rem;
+    text-align: center;
+  }
+  
+  @media (min-width: 1024px) {
+    .process-step {
+      padding: 1.5rem 1rem;
+    }
+  }
+  
+  .process-step-header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .process-step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    background: rgba(30, 200, 232, 0.1);
+    border: 2px solid rgba(30, 200, 232, 0.3);
+    border-radius: 50%;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #1EC8E8;
+    position: relative;
+    z-index: 10;
+  }
+  
+  .process-step-connector {
+    display: none;
+  }
+  
+  @media (min-width: 1024px) {
+    .process-step-connector {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: calc(50% + 2rem);
+      width: calc(100% - 2rem);
+      height: 2px;
+      background: linear-gradient(90deg, rgba(30, 200, 232, 0.3), rgba(30, 200, 232, 0.1));
+      transform: translateY(-50%);
+    }
+  }
+  
+  .process-step-title {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+  
+  .process-step-description {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #6B7280;
+  }
+</style>

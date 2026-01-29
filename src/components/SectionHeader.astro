@@ -1,0 +1,68 @@
+---
+export interface Props {
+  label?: string;
+  title: string;
+  description?: string;
+  centered?: boolean;
+}
+
+const { label, title, description, centered = false } = Astro.props;
+---
+
+<div class:list={['section-header', { 'section-header--centered': centered }]}>
+  {label && (
+    <span class="section-header-label animate-fade-up">{label}</span>
+  )}
+  
+  <h2 class="section-header-title animate-fade-up">{title}</h2>
+  
+  {description && (
+    <p class="section-header-description animate-fade-up">{description}</p>
+  )}
+</div>
+
+<style>
+  .section-header {
+    margin-bottom: 3rem;
+  }
+  
+  .section-header--centered {
+    text-align: center;
+  }
+  
+  .section-header-label {
+    display: inline-block;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #1EC8E8;
+    margin-bottom: 0.75rem;
+  }
+  
+  .section-header-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.02em;
+  }
+  
+  @media (min-width: 640px) {
+    .section-header-title {
+      font-size: 2.5rem;
+    }
+  }
+  
+  .section-header-description {
+    margin-top: 1rem;
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: #6B7280;
+    max-width: 36rem;
+  }
+  
+  .section-header--centered .section-header-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>

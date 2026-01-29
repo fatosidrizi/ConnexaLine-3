@@ -1,0 +1,205 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import CTASection from '../components/CTASection.astro';
+
+const services = [
+  {
+    title: 'Glasfaser und Telekommunikation',
+    description: 'FTTH Ausbau, Netzwerkinstallation und Aktivierung für private und gewerbliche Anschlüsse.',
+    href: '/services/ftth',
+    icon: 'fiber'
+  },
+  {
+    title: 'Infrastruktur und Bau',
+    description: 'Tiefbau, Leerrohrverlegung und Kabeltrassen für nachhaltige Netzinfrastruktur.',
+    href: '/services/infrastructure',
+    icon: 'infrastructure'
+  },
+  {
+    title: 'Service und Wartung',
+    description: 'Regelmäßige Wartung, Störungsbehebung und technischer Support für bestehende Netze.',
+    href: '/services/maintenance',
+    icon: 'maintenance'
+  }
+];
+
+const projects = [
+  {
+    title: 'FTTH Erschließung Rhein Main',
+    scope: 'Glasfaserausbau für 2.400 Haushalte inklusive Tiefbau und Hausanschlüsse.',
+    location: 'Hessen',
+    services: ['FTTH', 'Tiefbau', 'Aktivierung']
+  },
+  {
+    title: 'Gewerbegebiet Vernetzung',
+    scope: 'Hochgeschwindigkeitsanbindung für 35 Gewerbebetriebe mit redundanter Infrastruktur.',
+    location: 'Bayern',
+    services: ['Glasfaser', 'Infrastruktur']
+  },
+  {
+    title: 'Kommunales Netzwerk Erweiterung',
+    scope: 'Erweiterung des kommunalen Glasfasernetzes um 18 Kilometer Trassenlänge.',
+    location: 'Baden Württemberg',
+    services: ['Tiefbau', 'Dokumentation']
+  }
+];
+---
+
+<BaseLayout title="Startseite">
+  <Hero
+    headline="ConnexaLine Verbindung, die Zukunft schafft."
+    subheadline="ConnexaLine ist Ihr Partner für moderne Telekommunikations und Glasfaserinfrastruktur. Von Planung über Bau bis Aktivierung zuverlässig, effizient, deutschlandweit."
+    primaryCTA={{ text: 'Projekt anfragen', href: '/contact' }}
+    secondaryCTA={{ text: 'Kontakt aufnehmen', href: '/contact' }}
+  />
+
+  <!-- Services Section -->
+  <section class="services-section">
+    <div class="container-custom">
+      <SectionHeader
+        label="Unsere Leistungen"
+        title="Komplettlösungen für Ihre Infrastruktur"
+        description="Von der Planung bis zur Wartung bieten wir alle Leistungen aus einer Hand."
+      />
+      
+      <div class="services-grid">
+        {services.map((service, index) => (
+          <div style={`transition-delay: ${index * 80}ms;`}>
+            <ServiceCard {...service} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <div class="process-wrapper">
+    <ProcessSteps />
+  </div>
+
+  <!-- Featured Projects Section -->
+  <section class="projects-section">
+    <div class="container-custom">
+      <SectionHeader
+        label="Referenzen"
+        title="Ausgewählte Projekte"
+        description="Ein Auszug aus unseren erfolgreich abgeschlossenen Projekten."
+      />
+      
+      <div class="projects-grid">
+        {projects.map((project, index) => (
+          <div style={`transition-delay: ${index * 80}ms;`}>
+            <ProjectCard {...project} />
+          </div>
+        ))}
+      </div>
+      
+      <div class="projects-link animate-fade-up">
+        <a href="/projects">
+          Alle Projekte ansehen
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <CTASection
+    title="Bereit für Ihr nächstes Projekt?"
+    description="Kontaktieren Sie uns für eine unverbindliche Beratung. Wir entwickeln gemeinsam die optimale Lösung für Ihre Anforderungen."
+    primaryCTA={{ text: 'Projekt anfragen', href: '/contact' }}
+    secondaryCTA={{ text: 'Mehr über uns', href: '/about' }}
+  />
+</BaseLayout>
+
+<style>
+  .services-section {
+    padding: 5rem 0;
+    background: linear-gradient(180deg, #0B0E11 0%, #0F1318 100%);
+  }
+  
+  @media (min-width: 1024px) {
+    .services-section {
+      padding: 7rem 0;
+    }
+  }
+  
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .services-grid > div {
+    height: 100%;
+  }
+  
+  @media (min-width: 768px) {
+    .services-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .process-wrapper {
+    background: #0A0D10;
+  }
+  
+  .projects-section {
+    padding: 5rem 0;
+    background: linear-gradient(180deg, #0F1318 0%, #0B0E11 100%);
+  }
+  
+  @media (min-width: 1024px) {
+    .projects-section {
+      padding: 7rem 0;
+    }
+  }
+  
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .projects-grid > div {
+    height: 100%;
+  }
+  
+  @media (min-width: 768px) {
+    .projects-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .projects-link {
+    margin-top: 3rem;
+    text-align: center;
+  }
+  
+  .projects-link a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: #1EC8E8;
+    text-decoration: none;
+    transition: gap 0.2s ease;
+  }
+  
+  .projects-link a:hover {
+    gap: 0.75rem;
+  }
+  
+  .projects-link svg {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+</style>
