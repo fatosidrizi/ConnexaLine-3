@@ -36,14 +36,14 @@ const { label, title, description, centered = false } = Astro.props;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: #1EC8E8;
+    color: var(--color-primary);
     margin-bottom: 0.75rem;
   }
-  
+
   .section-header-title {
     font-size: 2rem;
     font-weight: 700;
-    color: #fff;
+    color: var(--color-foreground);
     letter-spacing: -0.02em;
   }
   
@@ -57,7 +57,7 @@ const { label, title, description, centered = false } = Astro.props;
     margin-top: 1rem;
     font-size: 1.0625rem;
     line-height: 1.7;
-    color: #6B7280;
+    color: var(--color-muted-dark);
     max-width: 36rem;
   }
   

@@ -1,0 +1,374 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTASection from '../../components/CTASection.astro';
+import { getTranslations } from '../../i18n/utils';
+
+const t = getTranslations('de');
+---
+
+<BaseLayout title="Service & Wartung" lang="de">
+  <section class="service-hero">
+    <div class="container-custom">
+      <div class="service-header animate-fade-up">
+        <span class="service-label">Service & Wartung</span>
+        <h1 class="service-title">Wartung & Support</h1>
+        <p class="service-description">
+          Zuverlässige Wartung, schnelle Störungsbehebung und professioneller technischer Support
+          für bestehende Netzwerke. Damit Ihre Infrastruktur stets verfügbar bleibt.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-content">
+    <div class="container-custom">
+      <div class="content-grid">
+        <div class="content-main">
+          <div class="content-section">
+            <h2>Unsere Service-Leistungen</h2>
+            <ul class="feature-list">
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <div>
+                  <strong>Präventive Wartung</strong>
+                  <p>Regelmäßige Inspektionen und Wartungsarbeiten zur Vermeidung von Ausfällen</p>
+                </div>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <div>
+                  <strong>24/7 Entstörung</strong>
+                  <p>Schnelle Reaktion bei Störungen, auch außerhalb der Geschäftszeiten</p>
+                </div>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <div>
+                  <strong>Netzwerkanalyse</strong>
+                  <p>Detaillierte Messungen und Analysen zur Optimierung der Netzqualität</p>
+                </div>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <div>
+                  <strong>Dokumentation</strong>
+                  <p>Umfassende Dokumentation aller Wartungs- und Reparaturarbeiten</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="content-section">
+            <h2>Leistungen im Detail</h2>
+            
+            <div class="service-detail">
+              <h3>Wartungsverträge</h3>
+              <p>
+                Individuelle Wartungsverträge für Ihre Netzinfrastruktur. Wir führen
+                regelmäßige Inspektionen durch, überprüfen die Funktion aller Komponenten
+                und führen präventive Maßnahmen durch, um Ausfälle zu vermeiden.
+                Flexible Vertragsmodelle je nach Ihren Anforderungen.
+              </p>
+            </div>
+
+            <div class="service-detail">
+              <h3>Störungsbeseitigung</h3>
+              <p>
+                Bei auftretenden Störungen sind wir schnell zur Stelle. Unser erfahrenes
+                Technikteam lokalisiert Fehler zuverlässig, führt Reparaturen durch und
+                dokumentiert alle Maßnahmen. Optional bieten wir 24/7-Bereitschaft für
+                kritische Infrastrukturen.
+              </p>
+            </div>
+
+            <div class="service-detail">
+              <h3>Netzwerk-Messungen</h3>
+              <p>
+                Professionelle OTDR-Messungen zur Überprüfung der Glasfaserqualität,
+                Dämpfungsmessungen und Reflektionsmessungen. Wir erstellen detaillierte
+                Messprotokolle und dokumentieren alle Ergebnisse gemäß den geltenden
+                Standards.
+              </p>
+            </div>
+
+            <div class="service-detail">
+              <h3>Modernisierung & Upgrades</h3>
+              <p>
+                Anpassung bestehender Netze an neue Anforderungen: Erweiterung der
+                Kapazitäten, Austausch veralteter Komponenten, Integration neuer
+                Technologien. Wir planen und realisieren Upgrades mit minimaler
+                Beeinträchtigung des laufenden Betriebs.
+              </p>
+            </div>
+
+            <div class="service-detail">
+              <h3>Schulung und Beratung</h3>
+              <p>
+                Wir schulen Ihr Personal im Umgang mit der installierten Infrastruktur
+                und beraten Sie zu Optimierungsmöglichkeiten. Auf Wunsch erstellen wir
+                individuelle Betriebshandbücher und Notfallpläne.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="content-sidebar">
+          <div class="sidebar-card">
+            <h3>Service-Level</h3>
+            <div class="sla-options">
+              <div class="sla-option">
+                <strong>Standard</strong>
+                <p>Reaktionszeit: 48h<br>Mo-Fr 8-17 Uhr</p>
+              </div>
+              <div class="sla-option">
+                <strong>Premium</strong>
+                <p>Reaktionszeit: 24h<br>Mo-Fr 7-19 Uhr</p>
+              </div>
+              <div class="sla-option">
+                <strong>24/7</strong>
+                <p>Reaktionszeit: 4h<br>Rund um die Uhr</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <h3>Messgeräte</h3>
+            <ul class="method-list">
+              <li>OTDR (Optical Time Domain Reflectometer)</li>
+              <li>Dämpfungsmessgeräte</li>
+              <li>Leistungsmesser</li>
+              <li>Fehlerortungsgeräte</li>
+              <li>Netzwerk-Analysatoren</li>
+            </ul>
+          </div>
+
+          <div class="sidebar-card">
+            <h3>Service anfragen</h3>
+            <p>Benötigen Sie Wartung oder Support für Ihre Infrastruktur? Kontaktieren Sie uns.</p>
+            <a href="/contact" class="btn-primary">
+              Jetzt anfragen
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title={t.cta.title}
+    description={t.cta.description}
+    primaryCTA={{ text: t.cta.primaryCTA, href: '/contact' }}
+    secondaryCTA={{ text: t.cta.secondaryCTA, href: '/about' }}
+  />
+</BaseLayout>
+
+<style>
+  .service-hero {
+    padding: 8rem 0 4rem;
+    background: linear-gradient(180deg, var(--color-background) 0%, var(--color-background-gradient-end) 100%);
+  }
+
+  .service-header {
+    max-width: 48rem;
+  }
+
+  .service-label {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+
+  .service-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-foreground);
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .service-title {
+      font-size: 3.5rem;
+    }
+  }
+
+  .service-description {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+  }
+
+  .service-content {
+    padding: 4rem 0;
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  @media (min-width: 1024px) {
+    .content-grid {
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+
+  .content-section {
+    margin-bottom: 3rem;
+  }
+
+  .content-section h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--color-foreground);
+    margin-bottom: 1.5rem;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .feature-list li {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .feature-list svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--color-primary);
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+  }
+
+  .feature-list strong {
+    display: block;
+    color: var(--color-foreground);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+
+  .feature-list p {
+    color: var(--color-muted-dark);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .service-detail {
+    margin-bottom: 2rem;
+  }
+
+  .service-detail h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 0.75rem;
+  }
+
+  .service-detail p {
+    color: var(--color-muted-dark);
+    line-height: 1.7;
+  }
+
+  .sidebar-card {
+    padding: 1.5rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .sidebar-card h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 1rem;
+  }
+
+  .sidebar-card p {
+    color: var(--color-muted-dark);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .sla-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .sla-option {
+    padding: 1rem;
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+  }
+
+  .sla-option strong {
+    display: block;
+    color: var(--color-primary);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .sla-option p {
+    font-size: 0.875rem;
+    color: var(--color-muted-dark);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .method-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .method-list li {
+    font-size: 0.9375rem;
+    color: var(--color-muted-dark);
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .method-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+  }
+
+  .sidebar-card .btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .sidebar-card svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+</style>

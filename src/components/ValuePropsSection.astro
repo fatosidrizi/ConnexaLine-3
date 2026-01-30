@@ -1,0 +1,173 @@
+---
+export interface ValuePropItem {
+  title: string;
+  description: string;
+  icon?: 'quality' | 'delivery' | 'handover';
+}
+
+export interface Props {
+  label: string;
+  title: string;
+  description?: string;
+  items: ValuePropItem[];
+}
+
+const { label, title, description, items } = Astro.props;
+
+const icons: Record<NonNullable<ValuePropItem['icon']>, string> = {
+  quality: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12.75L11.25 15 15 9.75M12 22.5c5.799 0 10.5-4.701 10.5-10.5S17.799 1.5 12 1.5 1.5 6.201 1.5 12 6.201 22.5 12 22.5z" />`,
+  delivery: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12h3m3 0h3m3 0h3m3 0h3M6 12a6 6 0 1112 0 6 6 0 01-12 0z" />`,
+  handover: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-3-3v6m-7.5 6h15A2.25 2.25 0 0021.75 18.75v-13.5A2.25 2.25 0 0019.5 3h-15A2.25 2.25 0 002.25 5.25v13.5A2.25 2.25 0 004.5 21z" />`
+};
+---
+
+<section class="valueprops-section">
+  <div class="container-custom">
+    <div class="valueprops-header animate-fade-up">
+      <span class="valueprops-label">{label}</span>
+      <h2 class="valueprops-title">{title}</h2>
+      {description && <p class="valueprops-description">{description}</p>}
+    </div>
+
+    <div class="valueprops-grid">
+      {items.map((item, index) => (
+        <div class="valueprops-card animate-fade-up" style={`transition-delay: ${index * 90}ms;`}>
+          <div class="valueprops-card-inner">
+            {item.icon && icons[item.icon] && (
+              <div class="valueprops-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={icons[item.icon]} />
+              </div>
+            )}
+            <h3 class="valueprops-card-title">{item.title}</h3>
+            <p class="valueprops-card-description">{item.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .valueprops-section {
+    padding: 4.5rem 0;
+    background: var(--color-background-alt);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  @media (min-width: 1024px) {
+    .valueprops-section {
+      padding: 5.5rem 0;
+    }
+  }
+
+  .valueprops-header {
+    text-align: center;
+    margin-bottom: 2.75rem;
+  }
+
+  @media (min-width: 1024px) {
+    .valueprops-header {
+      margin-bottom: 3.25rem;
+    }
+  }
+
+  .valueprops-label {
+    display: inline-block;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .valueprops-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--color-foreground);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.9rem;
+  }
+
+  @media (min-width: 640px) {
+    .valueprops-title {
+      font-size: 2.25rem;
+    }
+  }
+
+  .valueprops-description {
+    font-size: 1.0625rem;
+    color: var(--color-muted-dark);
+    max-width: 46rem;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .valueprops-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .valueprops-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+  }
+
+  .valueprops-card {
+    position: relative;
+    padding: 2px;
+    border-radius: 1.25rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.02));
+    transition: all 0.3s ease;
+    height: 100%;
+  }
+
+  .valueprops-card:hover {
+    background: linear-gradient(135deg, rgba(30, 200, 232, 0.30), rgba(30, 200, 232, 0.05));
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px -12px rgba(30, 200, 232, 0.22);
+  }
+
+  .valueprops-card-inner {
+    height: 100%;
+    background: var(--color-surface);
+    border-radius: calc(1.25rem - 2px);
+    padding: 2rem;
+  }
+
+  .valueprops-icon {
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(30, 200, 232, 0.10);
+    border: 1px solid rgba(30, 200, 232, 0.18);
+    border-radius: 0.85rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .valueprops-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--color-primary);
+  }
+
+  .valueprops-card-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    letter-spacing: -0.01em;
+  }
+
+  .valueprops-card-description {
+    margin-top: 0.75rem;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--color-muted-dark);
+  }
+</style>

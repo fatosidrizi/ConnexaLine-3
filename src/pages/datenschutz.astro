@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Datenschutz" description="Datenschutzerklärung der ConnexaLine GmbH">
+<BaseLayout title="Datenschutz" description="Datenschutzerklärung der ConnexaLine GmbH" lang="de">
   <section class="legal-page">
     <div class="container-custom">
       <h1 class="legal-title">Datenschutzerklärung</h1>
@@ -195,7 +195,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .legal-title {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #ffffff;
+    color: var(--color-foreground);
     margin-bottom: 3rem;
   }
 
@@ -210,26 +210,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .legal-section h2 {
     font-size: 1.25rem;
     font-weight: 600;
-    color: #1EC8E8;
+    color: var(--color-primary);
     margin-bottom: 1rem;
   }
 
   .legal-section h3 {
     font-size: 1.1rem;
     font-weight: 600;
-    color: #ffffff;
+    color: var(--color-foreground);
     margin-top: 1.5rem;
     margin-bottom: 0.75rem;
   }
 
   .legal-section p {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--color-muted);
     line-height: 1.8;
     margin-bottom: 0.75rem;
   }
 
   .legal-section a {
-    color: #1EC8E8;
+    color: var(--color-primary);
     text-decoration: none;
     transition: opacity 0.2s ease;
     word-break: break-word;
@@ -241,17 +241,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .legal-section strong {
-    color: #ffffff;
+    color: var(--color-foreground);
   }
 
   .legal-footer {
     margin-top: 3rem;
     padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid var(--color-border);
   }
 
   .legal-footer p {
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--color-text-tertiary);
     font-size: 0.875rem;
   }
 </style>

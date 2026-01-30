@@ -1,0 +1,65 @@
+---
+import { getLocaleFromUrl, getEquivalentPath } from '../i18n/utils';
+import type { Locale } from '../i18n/translations';
+
+const currentLocale = getLocaleFromUrl(Astro.url);
+const targetLocale: Locale = currentLocale === 'de' ? 'en' : 'de';
+const targetPath = getEquivalentPath(Astro.url.pathname, targetLocale);
+---
+
+<nav class="language-switcher" aria-label="Language selection">
+  <a
+    href={currentLocale === 'de' ? '#' : getEquivalentPath(Astro.url.pathname, 'de')}
+    class:list={['lang-link', { active: currentLocale === 'de' }]}
+    lang="de"
+    hreflang="de"
+    aria-current={currentLocale === 'de' ? 'page' : undefined}
+    aria-label={currentLocale === 'de' ? 'Deutsch (aktuelle Sprache)' : 'Zu Deutsch wechseln'}
+  >
+    DE
+  </a>
+  <span class="lang-divider" aria-hidden="true">/</span>
+  <a
+    href={currentLocale === 'en' ? '#' : getEquivalentPath(Astro.url.pathname, 'en')}
+    class:list={['lang-link', { active: currentLocale === 'en' }]}
+    lang="en"
+    hreflang="en"
+    aria-current={currentLocale === 'en' ? 'page' : undefined}
+    aria-label={currentLocale === 'en' ? 'English (current language)' : 'Switch to English'}
+  >
+    EN
+  </a>
+</nav>
+
+<style>
+  .language-switcher {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .lang-link {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    padding: 0.25rem 0.375rem;
+    border-radius: 0.25rem;
+    transition: all 0.2s ease;
+  }
+
+  .lang-link:hover:not(.active) {
+    color: var(--color-foreground);
+    background: var(--color-border);
+  }
+
+  .lang-link.active {
+    color: var(--color-primary);
+    cursor: default;
+  }
+
+  .lang-divider {
+    font-size: 0.75rem;
+    color: var(--color-text-tertiary);
+  }
+</style>

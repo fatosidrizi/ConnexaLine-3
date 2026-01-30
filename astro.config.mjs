@@ -8,5 +8,12 @@ export default defineConfig({
   output: 'static',
   build: {
     format: 'directory'
+  },
+  i18n: {
+    defaultLocale: 'de',
+    locales: ['de', 'en'],
+    routing: {
+      prefixDefaultLocale: false
+    }
   }
 });
