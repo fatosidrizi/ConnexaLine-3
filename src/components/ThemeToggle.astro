@@ -1,7 +1,7 @@
 ---
 ---
 
-<button id="theme-toggle" class="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Toggle theme" title="Toggle theme">
+<button class="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Toggle theme" title="Toggle theme">
   <svg class="theme-icon theme-icon-sun" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
   </svg>
@@ -19,10 +19,19 @@
     height: 2.25rem;
     background: transparent;
     border: 1px solid var(--color-border-light);
-    border-radius: 0.5rem;
+    border-radius: 0.375rem;
     color: var(--color-foreground);
     cursor: pointer;
     transition: all 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  @media (min-width: 768px) {
+    .theme-toggle {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.5rem;
+    }
   }
 
   .theme-toggle:hover {
@@ -31,9 +40,16 @@
   }
 
   .theme-icon {
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 1.125rem;
+    height: 1.125rem;
     transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+  }
+
+  @media (min-width: 768px) {
+    .theme-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
   }
 
   .theme-icon-sun {
@@ -65,37 +81,42 @@
 
 <script>
   function initThemeToggle() {
-    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggles = document.querySelectorAll('.theme-toggle');
     const html = document.documentElement;
 
-    if (!themeToggle) return;
+    if (!themeToggles.length) return;
 
     // Set initial aria-checked state based on current theme
     const isLight = html.classList.contains('light');
-    themeToggle.setAttribute('aria-checked', String(isLight));
-    themeToggle.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
 
-    // Remove any existing listeners by cloning
-    const newToggle = themeToggle.cloneNode(true);
-    newToggle.setAttribute('aria-checked', String(isLight));
-    newToggle.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
-    themeToggle.parentNode?.replaceChild(newToggle, themeToggle);
+    themeToggles.forEach((themeToggle) => {
+      themeToggle.setAttribute('aria-checked', String(isLight));
+      themeToggle.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
 
-    // Toggle theme on button click
-    newToggle.addEventListener('click', () => {
-      const currentTheme = html.classList.contains('light') ? 'light' : 'dark';
-      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      // Remove any existing listeners by cloning
+      const newToggle = themeToggle.cloneNode(true) as HTMLElement;
+      newToggle.setAttribute('aria-checked', String(isLight));
+      newToggle.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
+      themeToggle.parentNode?.replaceChild(newToggle, themeToggle);
 
-      if (newTheme === 'light') {
-        html.classList.add('light');
-      } else {
-        html.classList.remove('light');
-      }
-      localStorage.setItem('theme', newTheme);
+      // Toggle theme on button click
+      newToggle.addEventListener('click', () => {
+        const currentTheme = html.classList.contains('light') ? 'light' : 'dark';
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
 
-      // Update aria attributes
-      newToggle.setAttribute('aria-checked', String(newTheme === 'light'));
-      newToggle.setAttribute('aria-label', newTheme === 'light' ? 'Switch to dark mode' : 'Switch to light mode');
+        if (newTheme === 'light') {
+          html.classList.add('light');
+        } else {
+          html.classList.remove('light');
+        }
+        localStorage.setItem('theme', newTheme);
+
+        // Update aria attributes on all toggles
+        document.querySelectorAll('.theme-toggle').forEach((toggle) => {
+          toggle.setAttribute('aria-checked', String(newTheme === 'light'));
+          toggle.setAttribute('aria-label', newTheme === 'light' ? 'Switch to dark mode' : 'Switch to light mode');
+        });
+      });
     });
   }
 
