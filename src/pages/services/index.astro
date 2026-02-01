@@ -3,29 +3,30 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import SectionHeader from '../../components/SectionHeader.astro';
 import ServiceCard from '../../components/ServiceCard.astro';
 import CTASection from '../../components/CTASection.astro';
-import { getTranslations } from '../../i18n/utils';
+import { getTranslations, getLocalizedPath } from '../../i18n/utils';
 
 const t = getTranslations('de');
+const localPath = (path: string) => getLocalizedPath(path, 'de');
 
 const services = [
   {
     title: t.services.fiber.title,
     description: t.services.fiber.description,
-    href: '/services/ftth',
+    href: localPath('services/ftth'),
     icon: 'fiber',
     learnMore: t.services.learnMore
   },
   {
     title: t.services.infrastructure.title,
     description: t.services.infrastructure.description,
-    href: '/services/infrastructure',
+    href: localPath('services/infrastructure'),
     icon: 'infrastructure',
     learnMore: t.services.learnMore
   },
   {
     title: t.services.maintenance.title,
     description: t.services.maintenance.description,
-    href: '/services/maintenance',
+    href: localPath('services/maintenance'),
     icon: 'maintenance',
     learnMore: t.services.learnMore
   }
@@ -102,8 +103,8 @@ const services = [
     title={t.cta.title}
     description={t.cta.description}
     steps={t.cta.steps}
-    primaryCTA={{ text: t.cta.primaryCTA, href: '/contact' }}
-    secondaryCTA={{ text: t.cta.secondaryCTA, href: '/about' }}
+    primaryCTA={{ text: t.cta.primaryCTA, href: localPath('contact') }}
+    secondaryCTA={{ text: t.cta.secondaryCTA, href: localPath('about') }}
   />
 </BaseLayout>
 

@@ -127,6 +127,19 @@ const { headline, subheadline, primaryCTA, secondaryCTA } = Astro.props;
     pointer-events: none;
     overflow: hidden;
     opacity: 0.25;
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .hero-network {
+      display: block;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-network {
+      display: none;
+    }
   }
 
   .network-svg {
@@ -200,9 +213,10 @@ const { headline, subheadline, primaryCTA, secondaryCTA } = Astro.props;
     }
   }
 
-  @media (max-width: 768px) {
-    .hero-network {
-      opacity: 0.15;
+  @media (prefers-reduced-motion: reduce) {
+    .connection,
+    .node {
+      animation: none;
     }
   }
   

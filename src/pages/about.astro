@@ -2,9 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import StatsSection from '../components/StatsSection.astro';
 import CTASection from '../components/CTASection.astro';
-import { getTranslations } from '../i18n/utils';
+import { getTranslations, getLocalizedPath } from '../i18n/utils';
 
 const t = getTranslations('de');
+const localPath = (path: string) => getLocalizedPath(path, 'de');
 
 const team = [
   {
@@ -84,7 +85,17 @@ const values = [
           </p>
         </div>
         <div class="about-image animate-fade-up" style="animation-delay: 100ms;">
-          <div class="image-placeholder">
+          <img 
+            src="/images/about-office.jpg" 
+            srcset="/images/about-office-400.jpg 400w, /images/about-office-800.jpg 800w, /images/about-office-1200.jpg 1200w"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
+            alt="ConnexaLine GmbH Büro in Neckarsulm"
+            loading="lazy"
+            width="600"
+            height="450"
+            class="about-img"
+          />
+          <div class="image-fallback">
             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
             </svg>
@@ -166,7 +177,7 @@ const values = [
     title={t.cta.title}
     description={t.cta.description}
     steps={t.cta.steps}
-    primaryCTA={{ text: t.cta.primaryCTA, href: '/contact' }}
+    primaryCTA={{ text: t.cta.primaryCTA, href: localPath('contact') }}
   />
 </BaseLayout>
 
@@ -241,7 +252,19 @@ const values = [
     margin-bottom: 1.25rem;
   }
 
-  .image-placeholder {
+  .about-image {
+    position: relative;
+  }
+
+  .about-img {
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    object-fit: cover;
+  }
+
+  .image-fallback {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: 1rem;
@@ -253,13 +276,27 @@ const values = [
     gap: 1rem;
   }
 
-  .image-placeholder svg {
+  .about-img:not([src]),
+  .about-img[src=""] {
+    display: none;
+  }
+
+  .about-img:not([src]) ~ .image-fallback,
+  .about-img[src=""] ~ .image-fallback {
+    display: flex;
+  }
+
+  .about-img[src]:not([src=""]) ~ .image-fallback {
+    display: none;
+  }
+
+  .image-fallback svg {
     width: 4rem;
     height: 4rem;
     color: var(--color-primary);
   }
 
-  .image-placeholder span {
+  .image-fallback span {
     font-size: 1.125rem;
     font-weight: 600;
     color: var(--color-foreground);

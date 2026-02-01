@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getTranslations } from '../../i18n/utils';
+import { getTranslations, getLocalizedPath } from '../../i18n/utils';
 
 const t = getTranslations('en');
+const localPath = (path: string) => getLocalizedPath(path, 'en');
 ---
 
 <BaseLayout title="Contact" lang="en">
@@ -61,7 +62,7 @@ const t = getTranslations('en');
             <div class="form-group form-checkbox">
               <input type="checkbox" id="privacy" name="privacy" required />
               <label for="privacy">
-                I agree to the processing of my data according to the <a href="/en/privacy">Privacy Policy</a>. *
+                I agree to the processing of my data according to the <a href={localPath('privacy')}>Privacy Policy</a>. *
               </label>
             </div>
             <button type="submit" class="btn-primary btn-submit">

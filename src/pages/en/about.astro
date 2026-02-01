@@ -2,9 +2,10 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import StatsSection from '../../components/StatsSection.astro';
 import CTASection from '../../components/CTASection.astro';
-import { getTranslations } from '../../i18n/utils';
+import { getTranslations, getLocalizedPath } from '../../i18n/utils';
 
 const t = getTranslations('en');
+const localPath = (path: string) => getLocalizedPath(path, 'en');
 
 const team = [
   {
@@ -166,7 +167,7 @@ const values = [
     title={t.cta.title}
     description={t.cta.description}
     steps={t.cta.steps}
-    primaryCTA={{ text: t.cta.primaryCTA, href: '/en/contact' }}
+    primaryCTA={{ text: t.cta.primaryCTA, href: localPath('contact') }}
   />
 </BaseLayout>
 

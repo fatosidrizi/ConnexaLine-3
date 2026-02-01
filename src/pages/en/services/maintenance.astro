@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import CTASection from '../../../components/CTASection.astro';
-import { getTranslations } from '../../../i18n/utils';
+import { getTranslations, getLocalizedPath } from '../../../i18n/utils';
 
 const t = getTranslations('en');
+const localPath = (path: string) => getLocalizedPath(path, 'en');
 ---
 
 <BaseLayout title="Maintenance" lang="en">
@@ -128,7 +129,7 @@ const t = getTranslations('en');
           <div class="sidebar-card">
             <h3>Need Support?</h3>
             <p>Contact us to discuss a maintenance contract tailored to your needs.</p>
-            <a href="/en/contact" class="btn-primary">
+            <a href={localPath('contact')} class="btn-primary">
               Contact Us
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -143,8 +144,8 @@ const t = getTranslations('en');
   <CTASection
     title={t.cta.title}
     description={t.cta.description}
-    primaryCTA={{ text: t.cta.primaryCTA, href: '/en/contact' }}
-    secondaryCTA={{ text: t.cta.secondaryCTA, href: '/en/about' }}
+    primaryCTA={{ text: t.cta.primaryCTA, href: localPath('contact') }}
+    secondaryCTA={{ text: t.cta.secondaryCTA, href: localPath('about') }}
   />
 </BaseLayout>
 
