@@ -16,9 +16,13 @@ const { headline, subheadline, primaryCTA, secondaryCTA } = Astro.props;
 ---
 
 <section class="hero">
-  <div class="hero-image" aria-hidden="true"></div>
+  <div class="hero-strands" aria-hidden="true">
+    <div class="fiber-strand fiber-strand-1"></div>
+    <div class="fiber-strand fiber-strand-2"></div>
+    <div class="fiber-strand fiber-strand-3"></div>
+    <div class="fiber-strand fiber-strand-4 fiber-strand-animated"></div>
+  </div>
   <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
   
   <div class="container-custom hero-content">
     <div class="hero-inner">
@@ -64,25 +68,131 @@ const { headline, subheadline, primaryCTA, secondaryCTA } = Astro.props;
     overflow: hidden;
   }
 
-  /* Optimized background layers for depth */
-  .hero-image {
+  /* Diagonal fiber strands */
+  .hero-strands {
     position: absolute;
     inset: 0;
-    background-image: url('/images/hero/fiber-network-hero.svg');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    opacity: 0.7;
-    mix-blend-mode: screen;
-    filter: saturate(1.1) contrast(1.08);
-    pointer-events: none;
     z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
   }
 
-  :global(.light) .hero-image {
-    opacity: 0.35;
-    mix-blend-mode: normal;
-    filter: saturate(1.15) contrast(1.1) brightness(0.95);
+  .fiber-strand {
+    position: absolute;
+    width: 1px;
+    height: 150%;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(30, 200, 232, 0.12) 20%,
+      rgba(30, 200, 232, 0.08) 50%,
+      rgba(30, 200, 232, 0.12) 80%,
+      transparent 100%
+    );
+    transform: rotate(45deg);
+    transform-origin: center;
+  }
+
+  :global(.light) .fiber-strand {
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(14, 165, 199, 0.08) 20%,
+      rgba(14, 165, 199, 0.05) 50%,
+      rgba(14, 165, 199, 0.08) 80%,
+      transparent 100%
+    );
+  }
+
+  .fiber-strand-1 {
+    left: 20%;
+    top: -25%;
+  }
+
+  .fiber-strand-2 {
+    left: 45%;
+    top: -25%;
+    opacity: 0.7;
+  }
+
+  .fiber-strand-3 {
+    left: 70%;
+    top: -25%;
+    opacity: 0.5;
+  }
+
+  .fiber-strand-4 {
+    left: 82%;
+    top: -25%;
+    opacity: 0.8;
+  }
+
+  /* Animated fiber strand with light pulse */
+  .fiber-strand-animated {
+    width: 2px;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(30, 200, 232, 0.2) 20%,
+      rgba(56, 189, 248, 0.15) 50%,
+      rgba(30, 200, 232, 0.2) 80%,
+      transparent 100%
+    );
+  }
+
+  :global(.light) .fiber-strand-animated {
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(14, 165, 199, 0.15) 20%,
+      rgba(56, 189, 248, 0.1) 50%,
+      rgba(14, 165, 199, 0.15) 80%,
+      transparent 100%
+    );
+  }
+
+  .fiber-strand-animated::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 8px;
+    height: 40px;
+    margin-left: -4px;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(30, 200, 232, 0.6) 0%,
+      rgba(56, 189, 248, 0.4) 30%,
+      transparent 70%
+    );
+    filter: blur(4px);
+    animation: pulse-travel 8s ease-in-out infinite;
+  }
+
+  :global(.light) .fiber-strand-animated::after {
+    background: radial-gradient(
+      ellipse at center,
+      rgba(14, 165, 199, 0.5) 0%,
+      rgba(56, 189, 248, 0.3) 30%,
+      transparent 70%
+    );
+  }
+
+  @keyframes pulse-travel {
+    0%, 100% {
+      top: -10%;
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      top: 110%;
+      opacity: 0;
+    }
   }
   
   .hero-bg {
@@ -90,28 +200,13 @@ const { headline, subheadline, primaryCTA, secondaryCTA } = Astro.props;
     inset: 0;
     z-index: 2;
     background: 
-      radial-gradient(ellipse 65% 45% at 50% -15%, rgba(30, 200, 232, 0.12), transparent 70%),
-      radial-gradient(ellipse 55% 35% at 85% 50%, rgba(56, 189, 248, 0.06), transparent 65%);
+      radial-gradient(ellipse 60% 40% at 50% -10%, rgba(30, 200, 232, 0.08), transparent 70%);
     pointer-events: none;
   }
 
   :global(.light) .hero-bg {
     background: 
-      radial-gradient(ellipse 65% 45% at 50% -15%, rgba(14, 165, 199, 0.08), transparent 70%),
-      radial-gradient(ellipse 55% 35% at 85% 50%, rgba(56, 189, 248, 0.04), transparent 65%);
-  }
-  
-  .hero-grid {
-    position: absolute;
-    inset: 0;
-    z-index: 3;
-    background-image: 
-      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-    background-size: 72px 72px;
-    mask-image: radial-gradient(ellipse 65% 55% at 50% 50%, black, transparent);
-    opacity: 0.35;
-    pointer-events: none;
+      radial-gradient(ellipse 60% 40% at 50% -10%, rgba(14, 165, 199, 0.05), transparent 70%);
   }
   
   .hero-content {
