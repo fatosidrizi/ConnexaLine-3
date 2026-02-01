@@ -7,6 +7,7 @@ export interface Props {
 
 const currentLocale = Astro.props.lang || getLocaleFromUrl(Astro.url);
 const t = getTranslations(currentLocale);
+const base = import.meta.env.BASE_URL;
 
 // Partner logos - these are placeholders that should be replaced with actual partner logos
 const partners = [
@@ -31,7 +32,16 @@ const partners = [
       {partners.map((partner) => (
         <div class="partner-card">
           <div class="partner-logo">
-            <span class="partner-name">{partner.name}</span>
+            {(partner.logo === 'kreahub' || partner.logo === '4tech' || partner.logo === 'telekom') ? (
+              <img 
+                src={`${base}images/partners/${partner.logo === 'telekom' ? 'dt' : partner.logo}-logo.png`}
+                alt={partner.name}
+                class="partner-logo-img"
+                loading="lazy"
+              />
+            ) : (
+              <span class="partner-name">{partner.name}</span>
+            )}
           </div>
         </div>
       ))}
@@ -145,6 +155,28 @@ const partners = [
     justify-content: center;
     width: 100%;
     height: 100%;
+  }
+
+  .partner-logo-img {
+    max-width: 100%;
+    max-height: 3rem;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(100%) opacity(0.7);
+    transition: all 0.3s ease;
+  }
+
+  .partner-card:hover .partner-logo-img {
+    filter: grayscale(0%) opacity(1);
+  }
+
+  :global(.light) .partner-logo-img {
+    filter: grayscale(100%) opacity(0.6);
+  }
+
+  :global(.light) .partner-card:hover .partner-logo-img {
+    filter: grayscale(0%) opacity(1);
   }
 
   .partner-name {
