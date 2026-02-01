@@ -1,0 +1,222 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import CTASection from '../../components/CTASection.astro';
+import { getTranslations } from '../../i18n/utils';
+
+const t = getTranslations('de');
+
+const services = [
+  {
+    title: t.services.fiber.title,
+    description: t.services.fiber.description,
+    href: '/services/ftth',
+    icon: 'fiber',
+    learnMore: t.services.learnMore
+  },
+  {
+    title: t.services.infrastructure.title,
+    description: t.services.infrastructure.description,
+    href: '/services/infrastructure',
+    icon: 'infrastructure',
+    learnMore: t.services.learnMore
+  },
+  {
+    title: t.services.maintenance.title,
+    description: t.services.maintenance.description,
+    href: '/services/maintenance',
+    icon: 'maintenance',
+    learnMore: t.services.learnMore
+  }
+];
+---
+
+<BaseLayout title="Leistungen" lang="de">
+  <section class="page-hero">
+    <div class="container-custom">
+      <div class="page-header animate-fade-up">
+        <span class="page-label">{t.services.label}</span>
+        <h1 class="page-title">{t.services.title}</h1>
+        <p class="page-description">{t.services.description}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="services-section">
+    <div class="container-custom">
+      <div class="services-grid">
+        {services.map((service, index) => (
+          <div class="service-item animate-fade-up" style={`animation-delay: ${index * 100}ms;`}>
+            <ServiceCard {...service} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="services-detail">
+    <div class="container-custom">
+      <div class="detail-grid">
+        <div class="detail-item animate-fade-up">
+          <div class="detail-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3>Zertifizierte Qualität</h3>
+          <p>Alle Arbeiten werden nach höchsten Standards und mit zertifizierten Materialien durchgeführt.</p>
+        </div>
+        <div class="detail-item animate-fade-up" style="animation-delay: 100ms;">
+          <div class="detail-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3>Termingerecht</h3>
+          <p>Wir halten unsere Zeitpläne ein und kommunizieren proaktiv bei Änderungen.</p>
+        </div>
+        <div class="detail-item animate-fade-up" style="animation-delay: 200ms;">
+          <div class="detail-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+          <h3>Dokumentation</h3>
+          <p>Lückenlose Dokumentation aller Arbeiten für vollständige Transparenz.</p>
+        </div>
+        <div class="detail-item animate-fade-up" style="animation-delay: 300ms;">
+          <div class="detail-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          </div>
+          <h3>Support</h3>
+          <p>Langfristiger Support und Wartung für alle installierten Systeme.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title={t.cta.title}
+    description={t.cta.description}
+    steps={t.cta.steps}
+    primaryCTA={{ text: t.cta.primaryCTA, href: '/contact' }}
+    secondaryCTA={{ text: t.cta.secondaryCTA, href: '/about' }}
+  />
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding: 8rem 0 4rem;
+    background: linear-gradient(180deg, var(--color-background) 0%, var(--color-background-gradient-end) 100%);
+  }
+
+  .page-header {
+    max-width: 48rem;
+  }
+
+  .page-label {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-foreground);
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .page-title {
+      font-size: 3.5rem;
+    }
+  }
+
+  .page-description {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+  }
+
+  .services-section {
+    padding: 4rem 0;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .services-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .service-item {
+    height: 100%;
+  }
+
+  .services-detail {
+    padding: 4rem 0;
+    background: var(--color-background-alt);
+  }
+
+  .detail-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .detail-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .detail-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .detail-item {
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
+
+  .detail-icon {
+    width: 3rem;
+    height: 3rem;
+    margin: 0 auto 1rem;
+    color: var(--color-primary);
+  }
+
+  .detail-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .detail-item h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 0.75rem;
+  }
+
+  .detail-item p {
+    font-size: 0.9375rem;
+    color: var(--color-muted-dark);
+    line-height: 1.6;
+  }
+</style>

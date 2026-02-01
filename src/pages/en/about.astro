@@ -1,0 +1,395 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import StatsSection from '../../components/StatsSection.astro';
+import CTASection from '../../components/CTASection.astro';
+import { getTranslations } from '../../i18n/utils';
+
+const t = getTranslations('en');
+
+const team = [
+  {
+    name: 'Hilmar Mollo',
+    role: 'Managing Director',
+    description: 'Responsible for strategic direction and business development.'
+  },
+  {
+    name: 'Patrick Hoffmann',
+    role: 'Managing Director',
+    description: 'Leading operational business and project management.'
+  },
+  {
+    name: 'Hazir Sopi',
+    role: 'Managing Director',
+    description: 'Technical leadership and quality assurance.'
+  }
+];
+
+const values = [
+  {
+    title: 'Quality',
+    description: 'We rely on the highest standards in materials and execution. Every project is carefully planned and documented.',
+    icon: 'quality'
+  },
+  {
+    title: 'Reliability',
+    description: 'On-time delivery and clear communication are a given for us. We keep our promises.',
+    icon: 'reliability'
+  },
+  {
+    title: 'Partnership',
+    description: 'Long-term relationships with our customers and partners are the foundation of our success.',
+    icon: 'partnership'
+  },
+  {
+    title: 'Innovation',
+    description: 'We use modern technologies and methods to deliver efficient and future-proof solutions.',
+    icon: 'innovation'
+  }
+];
+---
+
+<BaseLayout title="About Us" lang="en">
+  <section class="page-hero">
+    <div class="container-custom">
+      <div class="page-header animate-fade-up">
+        <span class="page-label">About Us</span>
+        <h1 class="page-title">Connection that creates the future</h1>
+        <p class="page-description">
+          ConnexaLine is your reliable partner for fiber optic and telecommunications infrastructure.
+          We deliver projects end-to-end – from planning through construction to handover.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <div class="container-custom">
+      <div class="about-grid">
+        <div class="about-content animate-fade-up">
+          <h2>Our Story</h2>
+          <p>
+            ConnexaLine was founded with the vision of sustainably improving
+            Germany's digital infrastructure. Based in Neckarsulm, we specialize
+            in the professional expansion of fiber optic networks.
+          </p>
+          <p>
+            Our team of experienced professionals combines technical expertise with
+            practical experience from numerous successfully completed projects. We work
+            throughout Germany and have established ourselves as a reliable partner
+            for network operators, municipalities, and businesses.
+          </p>
+          <p>
+            From initial consultation through detailed planning to clean documentation
+            and handover – at ConnexaLine you get all services from a single source.
+          </p>
+        </div>
+        <div class="about-image animate-fade-up" style="animation-delay: 100ms;">
+          <div class="image-placeholder">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+            <span>ConnexaLine GmbH</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="values-section">
+    <div class="container-custom">
+      <div class="section-header animate-fade-up">
+        <span class="section-label">Our Values</span>
+        <h2 class="section-title">What drives us</h2>
+      </div>
+      <div class="values-grid">
+        {values.map((value, index) => (
+          <div class="value-card animate-fade-up" style={`animation-delay: ${index * 100}ms;`}>
+            <div class="value-icon">
+              {value.icon === 'quality' && (
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                </svg>
+              )}
+              {value.icon === 'reliability' && (
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              )}
+              {value.icon === 'partnership' && (
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              )}
+              {value.icon === 'innovation' && (
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+              )}
+            </div>
+            <h3>{value.title}</h3>
+            <p>{value.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <StatsSection
+    label={t.stats.label}
+    items={t.stats.items}
+  />
+
+  <section class="team-section">
+    <div class="container-custom">
+      <div class="section-header animate-fade-up">
+        <span class="section-label">Leadership</span>
+        <h2 class="section-title">Our Management Team</h2>
+      </div>
+      <div class="team-grid">
+        {team.map((member, index) => (
+          <div class="team-card animate-fade-up" style={`animation-delay: ${index * 100}ms;`}>
+            <div class="team-avatar">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+            </div>
+            <h3>{member.name}</h3>
+            <span class="team-role">{member.role}</span>
+            <p>{member.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title={t.cta.title}
+    description={t.cta.description}
+    steps={t.cta.steps}
+    primaryCTA={{ text: t.cta.primaryCTA, href: '/en/contact' }}
+  />
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding: 8rem 0 4rem;
+    background: linear-gradient(180deg, var(--color-background) 0%, var(--color-background-gradient-end) 100%);
+  }
+
+  .page-header {
+    max-width: 48rem;
+  }
+
+  .page-label,
+  .section-label {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-foreground);
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .page-title {
+      font-size: 3.5rem;
+    }
+  }
+
+  .page-description {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+  }
+
+  .about-section {
+    padding: 4rem 0;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .about-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .about-content h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--color-foreground);
+    margin-bottom: 1.5rem;
+  }
+
+  .about-content p {
+    color: var(--color-muted-dark);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+
+  .image-placeholder {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .image-placeholder svg {
+    width: 4rem;
+    height: 4rem;
+    color: var(--color-primary);
+  }
+
+  .image-placeholder span {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+  }
+
+  .values-section {
+    padding: 4rem 0;
+    background: var(--color-background-alt);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-foreground);
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .values-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .values-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .value-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .value-icon {
+    width: 3rem;
+    height: 3rem;
+    margin: 0 auto 1rem;
+    color: var(--color-primary);
+  }
+
+  .value-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .value-card h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 0.75rem;
+  }
+
+  .value-card p {
+    font-size: 0.9375rem;
+    color: var(--color-muted-dark);
+    line-height: 1.6;
+  }
+
+  .team-section {
+    padding: 4rem 0;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .team-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .team-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .team-avatar {
+    width: 5rem;
+    height: 5rem;
+    margin: 0 auto 1.5rem;
+    background: var(--color-background-alt);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .team-avatar svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: var(--color-primary);
+  }
+
+  .team-card h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 0.25rem;
+  }
+
+  .team-role {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+
+  .team-card p {
+    font-size: 0.9375rem;
+    color: var(--color-muted-dark);
+    line-height: 1.6;
+  }
+</style>

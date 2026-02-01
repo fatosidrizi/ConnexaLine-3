@@ -1,0 +1,194 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import CTASection from '../../components/CTASection.astro';
+import { getTranslations } from '../../i18n/utils';
+
+const t = getTranslations('en');
+
+const projects = [
+  {
+    title: 'FTTH Development Rhine-Main',
+    scope: 'Fiber optic expansion for 2,400 households including civil engineering and house connections.',
+    location: 'Hesse',
+    services: ['FTTH', 'Civil Engineering', 'Activation']
+  },
+  {
+    title: 'Industrial Area Networking',
+    scope: 'High-speed connection for 35 businesses with redundant infrastructure.',
+    location: 'Bavaria',
+    services: ['Fiber Optic', 'Infrastructure']
+  },
+  {
+    title: 'Municipal Network Expansion',
+    scope: 'Expansion of the municipal fiber optic network by 18 kilometers of route length.',
+    location: 'Baden-Württemberg',
+    services: ['Civil Engineering', 'Documentation']
+  },
+  {
+    title: 'Residential Connection Stuttgart',
+    scope: 'FTTH connections for 1,800 residential units in a new development area.',
+    location: 'Baden-Württemberg',
+    services: ['FTTH', 'Installation', 'Activation']
+  },
+  {
+    title: 'Industrial Park Connectivity',
+    scope: 'Fiber backbone for 20 industrial businesses with 10 Gbit/s connection.',
+    location: 'North Rhine-Westphalia',
+    services: ['Backbone', 'Infrastructure']
+  },
+  {
+    title: 'Rural Broadband Expansion',
+    scope: 'Development of 12 rural communities with a total of 3,500 households.',
+    location: 'Lower Saxony',
+    services: ['FTTH', 'Civil Engineering', 'Maintenance']
+  }
+];
+---
+
+<BaseLayout title="Projects" lang="en">
+  <section class="page-hero">
+    <div class="container-custom">
+      <div class="page-header animate-fade-up">
+        <span class="page-label">{t.projects.label}</span>
+        <h1 class="page-title">{t.projects.title}</h1>
+        <p class="page-description">{t.projects.description}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects-section">
+    <div class="container-custom">
+      <div class="projects-grid">
+        {projects.map((project, index) => (
+          <div class="project-item animate-fade-up" style={`animation-delay: ${index * 80}ms;`}>
+            <ProjectCard {...project} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-section">
+    <div class="container-custom">
+      <div class="stats-grid">
+        {t.stats.items.map((stat, index) => (
+          <div class="stat-item animate-fade-up" style={`animation-delay: ${index * 100}ms;`}>
+            <span class="stat-value">{stat.value}</span>
+            <span class="stat-label">{stat.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title={t.cta.title}
+    description={t.cta.description}
+    steps={t.cta.steps}
+    primaryCTA={{ text: t.cta.primaryCTA, href: '/en/contact' }}
+    secondaryCTA={{ text: t.cta.secondaryCTA, href: '/en/about' }}
+  />
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding: 8rem 0 4rem;
+    background: linear-gradient(180deg, var(--color-background) 0%, var(--color-background-gradient-end) 100%);
+  }
+
+  .page-header {
+    max-width: 48rem;
+  }
+
+  .page-label {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-foreground);
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .page-title {
+      font-size: 3.5rem;
+    }
+  }
+
+  .page-description {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+  }
+
+  .projects-section {
+    padding: 4rem 0;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .projects-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .project-item {
+    height: 100%;
+  }
+
+  .stats-section {
+    padding: 4rem 0;
+    background: var(--color-background-alt);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .stats-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .stat-item {
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .stat-value {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.9375rem;
+    color: var(--color-muted-dark);
+  }
+</style>

@@ -1,0 +1,317 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CTASection from '../../../components/CTASection.astro';
+import { getTranslations } from '../../../i18n/utils';
+
+const t = getTranslations('en');
+---
+
+<BaseLayout title="Maintenance" lang="en">
+  <section class="service-hero">
+    <div class="container-custom">
+      <div class="service-header animate-fade-up">
+        <span class="service-label">Service & Maintenance</span>
+        <h1 class="service-title">Network Maintenance</h1>
+        <p class="service-description">
+          Regular maintenance, troubleshooting, and technical support for existing networks.
+          We keep your infrastructure running at peak performance.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-content">
+    <div class="container-custom">
+      <div class="content-grid">
+        <div class="content-main">
+          <div class="content-section">
+            <h2>Your Benefits</h2>
+            <ul class="feature-list">
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <div>
+                  <strong>24/7 Support</strong>
+                  <p>Round-the-clock technical support for critical issues</p>
+                </div>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <div>
+                  <strong>Preventive Care</strong>
+                  <p>Regular inspections to prevent issues before they occur</p>
+                </div>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <div>
+                  <strong>Fast Response</strong>
+                  <p>Quick reaction times for fault clearance and repairs</p>
+                </div>
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <div>
+                  <strong>Documentation</strong>
+                  <p>Detailed reporting on all maintenance activities</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="content-section">
+            <h2>Our Services in Detail</h2>
+
+            <div class="service-detail">
+              <h3>Regular Maintenance</h3>
+              <p>
+                Scheduled inspections and maintenance of network components to ensure
+                optimal performance. We check connections, clean equipment, and
+                verify signal quality to prevent service degradation.
+              </p>
+            </div>
+
+            <div class="service-detail">
+              <h3>Fault Clearance</h3>
+              <p>
+                Rapid response to network faults and outages. Our experienced technicians
+                use advanced diagnostic tools to quickly identify and resolve issues,
+                minimizing downtime for your network.
+              </p>
+            </div>
+
+            <div class="service-detail">
+              <h3>Performance Monitoring</h3>
+              <p>
+                Continuous monitoring of network performance metrics. We track signal
+                strength, connection quality, and other key indicators to identify
+                potential issues before they impact service.
+              </p>
+            </div>
+
+            <div class="service-detail">
+              <h3>Upgrade Support</h3>
+              <p>
+                Assistance with network upgrades and expansions. We help you plan
+                and implement improvements to your existing infrastructure,
+                ensuring seamless integration with current systems.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="content-sidebar">
+          <div class="sidebar-card">
+            <h3>Service Levels</h3>
+            <dl>
+              <dt>Response Time</dt>
+              <dd>Within 4 hours</dd>
+
+              <dt>Availability</dt>
+              <dd>24/7/365</dd>
+
+              <dt>Coverage</dt>
+              <dd>Nationwide</dd>
+
+              <dt>Reporting</dt>
+              <dd>Monthly reports</dd>
+            </dl>
+          </div>
+
+          <div class="sidebar-card">
+            <h3>Need Support?</h3>
+            <p>Contact us to discuss a maintenance contract tailored to your needs.</p>
+            <a href="/en/contact" class="btn-primary">
+              Contact Us
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title={t.cta.title}
+    description={t.cta.description}
+    primaryCTA={{ text: t.cta.primaryCTA, href: '/en/contact' }}
+    secondaryCTA={{ text: t.cta.secondaryCTA, href: '/en/about' }}
+  />
+</BaseLayout>
+
+<style>
+  .service-hero {
+    padding: 8rem 0 4rem;
+    background: linear-gradient(180deg, var(--color-background) 0%, var(--color-background-gradient-end) 100%);
+  }
+
+  .service-header {
+    max-width: 48rem;
+  }
+
+  .service-label {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+
+  .service-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-foreground);
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .service-title {
+      font-size: 3.5rem;
+    }
+  }
+
+  .service-description {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+  }
+
+  .service-content {
+    padding: 4rem 0;
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  @media (min-width: 1024px) {
+    .content-grid {
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+
+  .content-section {
+    margin-bottom: 3rem;
+  }
+
+  .content-section h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--color-foreground);
+    margin-bottom: 1.5rem;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .feature-list li {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .feature-list svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--color-primary);
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+  }
+
+  .feature-list strong {
+    display: block;
+    color: var(--color-foreground);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+
+  .feature-list p {
+    color: var(--color-muted-dark);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .service-detail {
+    margin-bottom: 2rem;
+  }
+
+  .service-detail h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 0.75rem;
+  }
+
+  .service-detail p {
+    color: var(--color-muted-dark);
+    line-height: 1.7;
+  }
+
+  .sidebar-card {
+    padding: 1.5rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .sidebar-card h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 1rem;
+  }
+
+  .sidebar-card p {
+    color: var(--color-muted-dark);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .sidebar-card dl {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 0.5rem;
+  }
+
+  .sidebar-card dt {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-muted);
+  }
+
+  .sidebar-card dd {
+    font-size: 0.875rem;
+    color: var(--color-foreground);
+    text-align: right;
+    margin: 0;
+  }
+
+  .sidebar-card .btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .sidebar-card svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+</style>
