@@ -2,8 +2,8 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  site: 'https://fatosidrizi.github.io',
-  base: '/ConnexaLine-3/',
+  site: 'https://mediumpurple-shark-884727.hostingersite.com', // Update this when you have your domain
+  base: '/',
   integrations: [tailwind()],
   output: 'static',
   build: {

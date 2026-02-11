@@ -9,14 +9,13 @@ const currentLocale = Astro.props.lang || getLocaleFromUrl(Astro.url);
 const t = getTranslations(currentLocale);
 const base = import.meta.env.BASE_URL;
 
-// Partner logos - these are placeholders that should be replaced with actual partner logos
 const partners = [
-  { name: "Deutsche Telekom", logo: "telekom" },
-  { name: "Vodafone", logo: "vodafone" },
-  { name: "1&1 Versatel", logo: "versatel" },
-  { name: "Inexio", logo: "inexio" },
-  { name: "Kreahub", logo: "kreahub" },
-  { name: "4-Tech", logo: "4tech" },
+  { name: "Deutsche GigaNetz", logo: "deutsche_gigaNetz_logo.svg", darkLogo: true },
+  { name: "Meridiam", logo: "meridiam_logo.svg", darkLogo: true },
+  { name: "Stadtwerke Münster", logo: "stadtwerke-münster-logo.svg", darkLogo: false },
+  { name: "Solvencon", logo: "solvencon.jpeg", darkLogo: false, jpgLogo: true, offsetY: "-10%" },
+  { name: "Kreahub", logo: "kreahub-logo.png", darkLogo: false, lightLogo: true, scale: 1.25 },
+  { name: "4-Tech", logo: "4tech-logo.png", darkLogo: true },
 ];
 ---
 
@@ -32,16 +31,11 @@ const partners = [
       {partners.map((partner) => (
         <div class="partner-card">
           <div class="partner-logo">
-            {(partner.logo === 'kreahub' || partner.logo === '4tech' || partner.logo === 'telekom') ? (
-              <img 
-                src={`${base}images/partners/${partner.logo === 'telekom' ? 'dt' : partner.logo}-logo.png`}
-                alt={partner.name}
-                class="partner-logo-img"
-                loading="lazy"
-              />
-            ) : (
-              <span class="partner-name">{partner.name}</span>
-            )}
+            <img
+              src={`${base}images/partners/${partner.logo}`}
+              alt={partner.name}
+              class:list={["partner-logo-img", { "dark-logo": partner.darkLogo, "light-logo": partner.lightLogo, "jpg-logo": partner.jpgLogo }]}              style={[partner.scale && `scale: ${partner.scale}`, partner.offsetY && `translate: 0 ${partner.offsetY}`].filter(Boolean).join('; ') || undefined}              loading="lazy"
+            />
           </div>
         </div>
       ))}
@@ -167,16 +161,60 @@ const partners = [
     transition: all 0.3s ease;
   }
 
+  .partner-logo-img.jpg-logo {
+    filter: grayscale(100%) opacity(0.7) invert(1);
+    mix-blend-mode: screen;
+  }
+
+  .partner-card:hover .partner-logo-img.jpg-logo {
+    filter: grayscale(0%) opacity(1) invert(1);
+    mix-blend-mode: screen;
+  }
+
+  :global(.light) .partner-logo-img.jpg-logo {
+    filter: grayscale(100%) opacity(0.6);
+    mix-blend-mode: multiply;
+  }
+
+  :global(.light) .partner-card:hover .partner-logo-img.jpg-logo {
+    filter: grayscale(0%) opacity(1);
+    mix-blend-mode: multiply;
+  }
+
+  .partner-logo-img.dark-logo {
+    filter: grayscale(100%) opacity(0.7) brightness(0) invert(1);
+  }
+
   .partner-card:hover .partner-logo-img {
     filter: grayscale(0%) opacity(1);
+  }
+
+  .partner-card:hover .partner-logo-img.dark-logo {
+    filter: grayscale(0%) opacity(1) brightness(0) invert(1);
   }
 
   :global(.light) .partner-logo-img {
     filter: grayscale(100%) opacity(0.6);
   }
 
+  :global(.light) .partner-logo-img.dark-logo {
+    filter: grayscale(100%) opacity(0.6);
+  }
+
+  :global(.light) .partner-logo-img.light-logo {
+    filter: grayscale(100%) opacity(0.6) brightness(0) invert(0);
+  }
+
   :global(.light) .partner-card:hover .partner-logo-img {
     filter: grayscale(0%) opacity(1);
+  }
+
+  :global(.light) .partner-card:hover .partner-logo-img.dark-logo {
+    filter: grayscale(0%) opacity(1);
+  }
+
+  :global(.light) .partner-card:hover .partner-logo-img.light-logo {
+    filter: grayscale(0%) opacity(1) brightness(0) invert(0);
   }
 
   .partner-name {
